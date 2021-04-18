@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+
+<h1><%= destination.name %></h1>
+
+<img src="<%= destination.image %>" width="300">
+<p>Location: <%= destination.city %>, <%= destination.state %>, <%= destination.country %></p>
+<p>Price Range: <%= destination.price %></p>
+<p>Cuisine(s): <%= destination.cuisine %></p>
+<p>Category: <%= destination.category %></p>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+
+<h1><%= title %></h1>
+<% destinations.forEach(function(destination) { %>
+    <img src="<%= destination.image %>" width="300">
+    <a href="/destinations/<%= destination._id %>"><%= destination.name %></a>
+    <p><%= destination.city %>, <%= destination.state %>, <%= destination.country %></p>
+    <p><%= destination.price %></p>
+<% }) %>
+
+<%- include('../partials/footer') %>

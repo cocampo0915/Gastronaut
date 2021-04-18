@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<h1><%= title %></h1>
+<form id="new-destination-form" action="/destinations" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="destination-name">
+    <br>
+    <label for="city">City:</label>
+    <input type="text" name="city" id="destination-city">
+    <br>
+    <label for="state">State:</label>
+    <input type="text" name="state" id="destination-state">
+    <br>
+    <label for="country">Country:</label>
+    <input type="text" name="country" id="destination-country">
+    <br>
+    <label for="cuisine">Cuisine:</label>
+    <input type="text" name="cuisine" id="destination-cuisine">
+    <br>
+    <label for="category">Category:</label>
+    <input type="text" name="category" id="destination-category">
+    <br>
+    <label for="price">Price Range:</label>
+    <select name="price">
+        <% price.forEach( price => { %>
+            <option value="<%= price %>"><%= price %></option>
+        <% }) %>
+    </select>
+    <br>
+    <label for="image">Add Image: </label>
+    <input type="text" name="image" id="destination-image">
+    <br>    
+    <input type="submit" value="Submit">
+
+</form>
+    
+<%- include('../partials/footer') %>
