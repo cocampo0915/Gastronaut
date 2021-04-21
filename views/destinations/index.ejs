@@ -2,8 +2,15 @@
 
 <h1><%= title %></h1>
 <% destinations.forEach(function(destination) { %>
-    <img src="<%= destination.image %>" width="300">
-    <a href="/destinations/<%= destination._id %>"><%= destination.name %></a>
+    <img src="<%= destination.image %>" width="500">
+    <br>
+    <div id="remove-destination">
+        <a href="/destinations/<%= destination._id %>"><%= destination.name %></a> 
+        <form action="/destinations/<%= destination._id %>?_method=DELETE" method="POST">
+            <button type="submit">Remove</button>
+        </form>
+    </div>
+
     <p><%= destination.city %>, <%= destination.state %>, <%= destination.country %></p>
     <p><%= destination.price %></p>
 <% }) %>

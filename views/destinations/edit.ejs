@@ -1,13 +1,13 @@
 <%- include('../partials/header') %>
 
 <h1><%= title %></h1>
-<form id="new-destination-form" action="/destinations" method="POST">
+<form action="/destinations/<%= destinationId %>?_method=PUT" method="POST" id="new-destination-form">
     <div class="row">
         <div class="column">
             <label for="name">Name:</label>
         </div>
         <div class="column-right">
-            <input type="text" name="name" id="destination-name">            
+            <input type="text" name="name" id="destination-name" placeholder="<%= destination.name %>">            
         </div>
     </div>
     <div class="row">
@@ -15,7 +15,7 @@
             <label for="city">City:</label>
         </div>
         <div class="column-right">
-            <input type="text" name="city" id="destination-city">            
+            <input type="text" name="city" id="destination-city" placeholder="<%= destination.city %>">            
         </div>
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
             <label for="state">State:</label>
         </div>
         <div class="column-right">
-            <input type="text" name="state" id="destination-state">        
+            <input type="text" name="state" id="destination-state" placeholder="<%= destination.state %>">        
         </div>
     </div>
     <div class="row">
@@ -31,7 +31,7 @@
             <label for="country">Country:</label>
         </div>
         <div class="column-right">
-            <input type="text" name="country" id="destination-country">            
+            <input type="text" name="country" id="destination-country" placeholder="<%= destination.country %>">            
         </div>
     </div>
     <div class="row">
@@ -39,7 +39,7 @@
             <label for="cuisine">Cuisine:</label>
         </div>
         <div class="column-right">
-            <input type="text" name="cuisine" id="destination-cuisine">
+            <input type="text" name="cuisine" id="destination-cuisine" placeholder="<%= destination.cuisine %>">
         </div>
     </div>
     <div class="row">
@@ -47,7 +47,7 @@
             <label for="category">Category:</label>
         </div>
         <div class="column-right">
-            <input type="text" name="category" id="destination-category">
+            <input type="text" name="category" id="destination-category" placeholder="<%= destination.category %>">
         </div>
     </div>
     <div class="row">
@@ -71,8 +71,8 @@
         </div>
     </div>
     <br>    
-    <input type="submit" value="Submit">
+    <input type="submit" value="Update">
 
 </form>
-    
+
 <%- include('../partials/footer') %>

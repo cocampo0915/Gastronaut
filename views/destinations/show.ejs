@@ -2,10 +2,21 @@
 
 <h1><%= destination.name %></h1>
 
-<img src="<%= destination.image %>" width="300">
-<p>Location: <%= destination.city %>, <%= destination.state %>, <%= destination.country %></p>
-<p>Price Range: <%= destination.price %></p>
-<p>Cuisine(s): <%= destination.cuisine %></p>
-<p>Category: <%= destination.category %></p>
+<div class="row-details">
+    <div class="column-image">
+        <img src="<%= destination.image %>" width="500">    
+    </div>
+    <div class="column-details">
+        <p><strong>Location:</strong> <%= destination.city %>, <%= destination.state %>, <%= destination.country %></p>
+        <p><strong>Price Range:</strong>  <%= destination.price %></p>
+        <p><strong>Cuisine(s):</strong>  <%= destination.cuisine %></p>
+        <p><strong>Category:</strong>  <%= destination.category %></p>
+        <form action="/destinations/<%= destination._id %>/edit">
+            <button>Edit</button>
+        </form>
+    </div>    
+</div>
+
+
 
 <%- include('../partials/footer') %>
