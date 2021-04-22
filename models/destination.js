@@ -41,7 +41,6 @@ const destinationSchema = new Schema({
         type: String,
         enum: ['$', '$$', '$$$', '$$$$'],
     },
-    menu: [menuSchema],
     image: {
         type: String,
         default: ''

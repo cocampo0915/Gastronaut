@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 // routers
 const indexRouter = require('./routes/index');
 const destinationRouter = require('./routes/destination');
-// const menuRouter = require('./routes/menu');
+const menuRouter = require('./routes/menu');
 
 // initialize the express app
 const app = express();
@@ -26,7 +26,7 @@ app.use(methodOverride('_method'));
 // mount our routes app.use()
 app.use('/', indexRouter);
 app.use('/destinations', destinationRouter);
-// app.use('/', menuRouter);
+app.use('/', menuRouter);
 
 // tell app to listen on a port for requests
 const port = 3000;

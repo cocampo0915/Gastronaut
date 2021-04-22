@@ -1,78 +1,81 @@
 <%- include('../partials/header') %>
 
 <h1><%= title %></h1>
-<form action="/destinations/<%= destinationId %>?_method=PUT" method="POST" id="new-destination-form">
-    <div class="row">
-        <div class="column">
-            <label for="name">Name:</label>
+    <form action="/destinations/<%= destinationId %>?_method=PUT" method="POST" id="new-destination-form">
+        <div class="row">
+            <div class="column">
+                <label for="name">Name:</label>
+            </div>
+            <div class="column-right">
+                <input type="text" name="name" id="destination-name" placeholder="<%= destination.name %>">            
+            </div>
         </div>
-        <div class="column-right">
-            <input type="text" name="name" id="destination-name" placeholder="<%= destination.name %>">            
+        <div class="row">
+            <div class="column">
+                <label for="city">City:</label>
+            </div>
+            <div class="column-right">
+                <input type="text" name="city" id="destination-city" placeholder="<%= destination.city %>">            
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <label for="city">City:</label>
+        <div class="row">
+            <div class="column">
+                <label for="state">State:</label>
+            </div>
+            <div class="column-right">
+                <input type="text" name="state" id="destination-state" placeholder="<%= destination.state %>">        
+            </div>
         </div>
-        <div class="column-right">
-            <input type="text" name="city" id="destination-city" placeholder="<%= destination.city %>">            
+        <div class="row">
+            <div class="column">
+                <label for="country">Country:</label>
+            </div>
+            <div class="column-right">
+                <input type="text" name="country" id="destination-country" placeholder="<%= destination.country %>">            
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <label for="state">State:</label>
+        <div class="row">
+            <div class="column">
+                <label for="cuisine">Cuisine:</label>
+            </div>
+            <div class="column-right">
+                <input type="text" name="cuisine" id="destination-cuisine" placeholder="<%= destination.cuisine %>">
+            </div>
         </div>
-        <div class="column-right">
-            <input type="text" name="state" id="destination-state" placeholder="<%= destination.state %>">        
+        <div class="row">
+            <div class="column">
+                <label for="category">Category:</label>
+            </div>
+            <div class="column-right">
+                <input type="text" name="category" id="destination-category" placeholder="<%= destination.category %>">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <label for="country">Country:</label>
+        <div class="row">
+            <div class="column">
+                <label for="price">Price Range:</label>
+            </div>
+            <div class="column-right">
+                <select name="price">
+                    <% price.forEach( price => { %>
+                        <option value="<%= price %>"><%= price %></option>
+                    <% }) %>
+                </select>            
+            </div>
         </div>
-        <div class="column-right">
-            <input type="text" name="country" id="destination-country" placeholder="<%= destination.country %>">            
+        <div class="row">
+            <div class="column">
+                <label for="image">Add Image: </label>
+            </div>
+            <div class="column-right">
+                <input type="text" name="image" id="destination-image">            
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <label for="cuisine">Cuisine:</label>
-        </div>
-        <div class="column-right">
-            <input type="text" name="cuisine" id="destination-cuisine" placeholder="<%= destination.cuisine %>">
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <label for="category">Category:</label>
-        </div>
-        <div class="column-right">
-            <input type="text" name="category" id="destination-category" placeholder="<%= destination.category %>">
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <label for="price">Price Range:</label>
-        </div>
-        <div class="column-right">
-            <select name="price">
-                <% price.forEach( price => { %>
-                    <option value="<%= price %>"><%= price %></option>
-                <% }) %>
-            </select>            
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <label for="image">Add Image: </label>
-        </div>
-        <div class="column-right">
-            <input type="text" name="image" id="destination-image">            
-        </div>
-    </div>
-    <br>    
-    <input type="submit" value="Update">
+        <br>    
+        <input type="submit" value="Update">
 
-</form>
+    </form>
 
+    <form action="/destinations/<%= destinationId %>"> 
+        <button>Return</button>
+    </form>
 <%- include('../partials/footer') %>

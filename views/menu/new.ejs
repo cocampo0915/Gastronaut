@@ -1,4 +1,43 @@
 <%- include('../partials/header') %>
 
 
+<h1><%= title %></h1>
+
+<form action="/destinations/<%= destinationId %>/menu" method="POST">
+    <div class="row">
+        <div class="column">
+            Name:
+        </div>        
+        <div class="right">
+            <input type="text" name="name">
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            Image URL
+        </div>        
+        <div class="right">
+            <input type="text" name="image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            Description
+        </div>        
+        <div class="right">
+            <input type="text" name="description">
+        </div>
+    </div>
+    <div class="buttons">
+        <div class="column">
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+</form>
+
+<div class="column">
+    <form action="/destinations/<%= destinationId %>" method="GET">
+    <button type="submit">Return</button>
+    </form>
+</div> 
 <%- include('../partials/footer') %>
