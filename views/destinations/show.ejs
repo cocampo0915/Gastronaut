@@ -2,7 +2,7 @@
 
 <h1><%= destination.name %></h1>
 
-<div class="row-details">
+<div id="row-details">
     <div class="column-image">
         <img src="<%= destination.image %>" width="500">    
     </div>
@@ -20,5 +20,26 @@
     </div>    
 </div>
 
+<section id="menu-items">
+    <div>
+        <h4>Menu Items</h4>
+    </div>
+    <div id="menu-table">
+        <% if (menu.length) { %>
+            <% menu.forEach(function (m) { %>
+            <div class="menu-item">
+                <img src="<%= m.image %>" width="200">
+                <p><%= m.name %></p>
+                <p><%= m.description %></p>
+                <form action="/menu/<%= m._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Remove</button>
+                </form>
+            </div>                
+            <% }); %>
+        <% } else { %>
+            <p>No menu items attached</p> 
+        <% } %>
+    </div>
+</section>
 
 <%- include('../partials/footer') %> 

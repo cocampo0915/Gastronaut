@@ -1,18 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const menuSchema = new Schema({
-    name: {
-        type: String,
-    },
-    image: {
-        type: String,
-    },
-    description: {
-        type: String,
-    },
-}, { timestamps: true });
-
 const commentsSchema = new Schema({
     username: {
         type: String,

@@ -1,4 +1,5 @@
 const Destination = require('../models/destination');
+const Menu = require('../models/menu');
 
 module.exports = {
     index,
@@ -22,11 +23,9 @@ function index(req, res) { // good
 
 function show(req, res) { // good
     Destination.findById(req.params.id, function(err, destination) {
-        if(err) {
-            console.log(err);
-        } else {
-        res.render('destinations/show', { title: 'Destination Detail', destination });
-        }
+        Menu.find( {destination: destination._id}, function(err, menu) {
+            res.render('destinations/show', { title: 'Destination Detail', destination, menu });
+        });
     });
 }
 
