@@ -13,11 +13,12 @@ body {
   flex-direction: column;
   background-color: rgb(253, 246, 246);
   min-height: 100vh;
+  font-family: "IBM Plex Sans";
 }
 
 main {
   flex-grow: 1;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 footer {
@@ -27,49 +28,23 @@ font-size: 0.8rem;
 }
 
 nav {
-  grid-area: nav;
-  background-color: #bb5e72;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
   padding: 0 20px 0 30px;
   width: 100%;
-}
-
-nav > a {
-  margin: 20px;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-
-nav > #title {
-  margin-right: auto;
-  font-family: "Lobster";
-  font-size: 60px;
-  letter-spacing: 0.02ch;
-  color: white;
 }
 
 h1 {
   margin: 40px;
   text-align: center;
+  font-size: 2.6rem;
+  font-weight: bolder;
 }
-
-table thead th {
-  padding: 5px 40px;
-  border-bottom: 1px solid black;
-}
-
-table td {
-  padding: 10px;
-  text-align: center;
-}
-
 
 button {
   margin: 10px;  
+}
+
+label {
+  font-size: 1rem;
 }
 
 .nav {
@@ -87,29 +62,13 @@ a:hover {
   color: rgb(157, 2, 2);
 }
 
-.row {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(2, minmax(auto, 15rem));
-  text-align: right;
+.form-title {
+  font-size: 2rem;
 }
 
-.column {
-  margin: 10px;
-}
-
-.column-right {  
-  align-self: center;
-  justify-self: baseline;
-}
-
-.row-details {
+#row-details {
   display: flex;
 }
-
-/* .column-image {
-  color: red;
-} */
 
 .column-details {
   margin-left: 10px;
@@ -136,26 +95,6 @@ a:hover {
   text-align: right;
 }
 
-#submit {
-  margin: 30px 130px;
-  font-size: 15px;
-  padding: 5px;
-  text-decoration: none;
-  border-radius: 5px;
-  grid-column: 1/ span 2;
-}
-
-#submit:hover {
-  background-color: hsl(189, 32%, 75%);
-}
-
-#flight-details {
-  margin: 20px;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1rem;
-}
-
 #destination-details, #ticket-details {
   margin: 20px;
   display: flex;
@@ -179,4 +118,10 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#title {
+  font-family: "Lobster";
+  letter-spacing: 0.04ch;
+  font-size: 2.6rem;
 }

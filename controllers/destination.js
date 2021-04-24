@@ -59,7 +59,11 @@ function update(req, res) { // works, but crashes after updating
     }
     const id = req.params.id;
     Destination.findOne( {_id: id} , function(err, destination) {
-        if (err) return res.redirect('/destinations/' + req.params.id);
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
         if (req.body.name) {
             destination.name = req.body.name;
         }
@@ -82,14 +86,13 @@ function update(req, res) { // works, but crashes after updating
             destination.image = req.body.image;
         }
 
-        destination.save(function(err, updatedDestination) {
+        destination.save(function(err) {
             if (err) {
-                console.log(err);
-            } else {
-                res.send(updatedDestination);               
+                return res.send();
             }
+            res.redirect('/destinations/' + id);              
         });
-        res.redirect('/destinations/' + id);     
+    
     });
 }
 

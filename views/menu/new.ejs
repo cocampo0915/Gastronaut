@@ -4,40 +4,37 @@
 <h1><%= title %></h1>
 
 <form action="/destinations/<%= destinationId %>/menu" method="POST">
-    <div class="row">
-        <div class="column">
-            Name:
-        </div>        
-        <div class="right">
+    <div class="row">     
+        <div class="input-field">
             <input type="text" name="name">
+            <label for="name">Name</label>
         </div>
     </div>
-    <div class="row">
-        <div class="column">
-            Image URL
-        </div>        
-        <div class="right">
+    <div class="row">      
+        <div class="input-field">
             <input type="text" name="image">
+            <label for="image">Image URL</label>
         </div>
     </div>
-    <div class="row">
-        <div class="column">
-            Description
-        </div>        
-        <div class="right">
-            <input type="text" name="description">
+    <div class="row">    
+        <div class="input-field">
+            <textarea id="textarea2" class="materialize-textarea" data-length="120" name="description"></textarea>
+            <label for="textarea2">Description</label>
         </div>
     </div>
-    <div class="buttons">
-        <div class="column">
+    <div class="center">
+        <div>
             <button type="submit">Submit</button>
         </div>
+</form>       
+        <div>
+            <form action="/destinations/<%= destinationId %>" method="GET">
+            <button type="submit">Return</button>
+            </form> 
+        </div> 
     </div>
-</form>
 
-<div class="column">
-    <form action="/destinations/<%= destinationId %>" method="GET">
-    <button type="submit">Return</button>
-    </form>
-</div> 
+
+
+
 <%- include('../partials/footer') %>

@@ -3,76 +3,65 @@
 <h1><%= title %></h1>
 <form id="new-destination-form" action="/destinations" method="POST">
     <div class="row">
-        <div class="column">
-            <label for="name">Name:</label>
+        <div class="input-field">
+            <input type="text" name="name" id="destination-name">
+            <label for="name">Name:</label>            
         </div>
-        <div class="column-right">
-            <input type="text" name="name" id="destination-name">            
+    </div>
+    <div>
+        <div class="input-field">
+            <input type="text" name="city" id="destination-city">
+            <label for="city">City:</label>                        
         </div>
     </div>
     <div class="row">
-        <div class="column">
-            <label for="city">City:</label>
-        </div>
-        <div class="column-right">
-            <input type="text" name="city" id="destination-city">            
+        <div class="input-field">
+            <input type="text" name="state" id="destination-state">
+            <label for="state">State:</label>        
         </div>
     </div>
     <div class="row">
-        <div class="column">
-            <label for="state">State:</label>
-        </div>
-        <div class="column-right">
-            <input type="text" name="state" id="destination-state">        
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
+        <div class="input-field">
+            <input type="text" name="country" id="destination-country">
             <label for="country">Country:</label>
         </div>
-        <div class="column-right">
-            <input type="text" name="country" id="destination-country">            
-        </div>
     </div>
     <div class="row">
-        <div class="column">
-            <label for="cuisine">Cuisine:</label>
-        </div>
-        <div class="column-right">
+        <div class="input-field">
             <input type="text" name="cuisine" id="destination-cuisine">
+            <label for="cuisine">Cuisine:</label>        
         </div>
     </div>
     <div class="row">
-        <div class="column">
+        <div class="input-field">
+            <input type="text" name="category" id="destination-category">
             <label for="category">Category:</label>
         </div>
-        <div class="column-right">
-            <input type="text" name="category" id="destination-category">
+    </div>
+    <div class="row">
+        <div class="input-field">
+            <div class="col s6"><label for="price">Price Range:</label></div>
+            <div class="col s6">
+                <select class="browser-default" name="price">
+                    <% price.forEach( price => { %>
+                        <option value="<%= price %>"><%= price %></option>
+                    <% }) %>
+                </select>                
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class="column">
-            <label for="price">Price Range:</label>
-        </div>
-        <div class="column-right">
-            <select name="price">
-                <% price.forEach( price => { %>
-                    <option value="<%= price %>"><%= price %></option>
-                <% }) %>
-            </select>            
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <label for="image">Add Image: </label>
-        </div>
-        <div class="column-right">
-            <input type="text" name="image" id="destination-image">            
+        <div class="input-field">
+            <input type="text" name="image" id="destination-image">
+            <label for="image">Add Image: </label>            
         </div>
     </div>
     <br>    
-    <input type="submit" value="Submit">
+    <div class="center">
+        <input type="submit" value="Submit">        
+    </div>
+
 
 </form>
-    
+
 <%- include('../partials/footer') %>
