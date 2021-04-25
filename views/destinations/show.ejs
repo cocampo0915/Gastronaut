@@ -7,10 +7,10 @@
         <img src="<%= destination.image %>" width="500">    
     </div>
     <div class="column-details">
-        <p><strong>Location:</strong> <%= destination.city %>, <%= destination.state %>, <%= destination.country %></p>
-        <p><strong>Price Range:</strong>  <%= destination.price %></p>
-        <p><strong>Cuisine(s):</strong>  <%= destination.cuisine %></p>
-        <p><strong>Category:</strong>  <%= destination.category %></p>
+        <p><span style="font-weight: bold;">Location:</span>  <%= destination.city %>, <%= destination.state %>, <%= destination.country %></p>
+        <p><span style="font-weight: bold;">Price Range:</span>  <%= destination.price %></p>
+        <p><span style="font-weight: bold;">Cuisine(s):</span>  <%= destination.cuisine %></p>
+        <p><span style="font-weight: bold;">Category:</span>  <%= destination.category %></p>
         <form action="/destinations/<%= destination._id %>/edit">
             <button>Edit</button>
         </form>
@@ -22,18 +22,27 @@
 
 <section id="menu-items">
     <div>
-        <h4>Menu Items</h4>
+        <h5>Menu Items</h5>
     </div>
     <div id="menu-table">
         <% if (menu.length) { %>
             <% menu.forEach(function (m) { %>
             <div class="menu-item">
-                <img src="<%= m.image %>" width="200">
-                <p><%= m.name %></p>
-                <p><%= m.description %></p>
-                <form action="/menu/<%= m._id %>?_method=DELETE" method="POST">
-                    <button type="submit">Remove</button>
-                </form>
+                <img src="<%= m.image %>" alt="<%= m.name %>" width="200" class="card">
+                <div class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <img src="<%= m.image %>" width="300">
+                        <p style="font-weight: bold;"><%= m.name %></p>
+                        <p><%= m.description %></p>
+                        <form action="/menu/<%= m._id %>?_method=DELETE" method="POST">
+                            <button type="submit">Remove</button>
+                        </form>                    
+                    </div>
+
+                </div>
+
+
             </div>                
             <% }); %>
         <% } else { %>
@@ -41,5 +50,6 @@
         <% } %>
     </div>
 </section>
+        <script src="/script.js"></script>
 
 <%- include('../partials/footer') %> 
