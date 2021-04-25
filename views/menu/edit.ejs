@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+
+
+<h1><%= title %></h1>
+
+<form action="/menu/<%= menuId %>?_method=PUT" method="POST">
+    <div class="row">     
+        <div class="input-field">
+            <input type="text" name="name" placeholder="<%= menu.name %>">
+            <label for="name">Name</label>
+        </div>
+    </div>
+    <div class="row">      
+        <div class="input-field">
+            <input type="text" name="image">
+            <label for="image">Image URL</label>
+        </div>
+    </div>
+    <div class="row">    
+        <div class="input-field">
+            <textarea id="textarea2" class="materialize-textarea" data-length="120" name="description" placeholder="<%= menu.description %>"></textarea>
+            <label for="textarea2">Description</label>
+        </div>
+    </div>
+    <div class="center">
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+</form>       
+        <div>
+            <form action="/menu/<%= menuId %>" method="GET">
+            <button type="submit">Return</button>
+            </form> 
+        </div> 
+    </div>
+
+
+
+
+<%- include('../partials/footer') %>

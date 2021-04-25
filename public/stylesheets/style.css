@@ -53,9 +53,15 @@ label {
   color: white;
 }
 
+a {
+  color: #b71c1c;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
 a:hover {
-  background-color: #a14055;
-  color: lightgray;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
 }
 
 .previous {

@@ -23,7 +23,8 @@ function index(req, res) { // good
 
 function show(req, res) { // good
     Destination.findById(req.params.id, function(err, destination) {
-        Menu.find( {destination: destination._id}, function(err, menu) {
+        Menu.find( { destination: destination._id }, function(err, menu) {
+            if (err) return res.redirect('/destinations');
             res.render('destinations/show', { title: 'Destination Detail', destination, menu });
         });
     });

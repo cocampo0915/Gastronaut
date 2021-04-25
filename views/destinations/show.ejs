@@ -36,7 +36,10 @@
                         <p style="font-weight: bold;"><%= m.name %></p>
                         <p><%= m.description %></p>
                         <form action="/menu/<%= m._id %>?_method=DELETE" method="POST">
-                            <button type="submit">Remove</button>
+                            <button>Remove</button>
+                        </form>
+                        <form action="/menu/<%= m._id %>/edit">
+                            <button>Edit</button>
                         </form>                    
                     </div>
 
