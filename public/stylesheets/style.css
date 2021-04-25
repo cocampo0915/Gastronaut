@@ -102,6 +102,19 @@ div.destination:hover img {
 	transform: scale(1);
 }
 
+img.card {
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+img.card:hover {
+	opacity: 0.5;
+	-webkit-transform: scale(1.15);
+	transform: scale(1.15);
+  cursor: pointer; 
+}
 .previous {
   color: rgb(157, 2, 2);
 }
