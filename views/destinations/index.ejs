@@ -2,7 +2,7 @@
 
 <h1><%= title %></h1>
 <% destinations.forEach(function(destination) { %>
-    <img src="<%= destination.image %>" width="500">
+    <a href="/destinations/<%= destination._id %>"><img src="<%= destination.image %>" width="500"></a> 
     <br>
     <div id="remove-destination">
         <a href="/destinations/<%= destination._id %>"><%= destination.name %></a> 

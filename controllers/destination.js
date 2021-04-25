@@ -83,6 +83,9 @@ function update(req, res) { // works, but crashes after updating
         if (req.body.category) {
             destination.category = req.body.category;
         }
+        if (req.body.price) {
+            destination.price = req.body.price;
+        }
         if (req.body.image) {
             destination.image = req.body.image;
         }
