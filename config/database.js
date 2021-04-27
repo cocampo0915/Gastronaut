@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const dbURL = 'mongodb+srv://admin:abc1234@cluster0.fvwdp.mongodb.net/gastronaut?retryWrites=true&w=majority';
+const connectionURI = process.env.DATABASE_URI;
 const db = mongoose.connection; // shortcut to mongoose.connection object
 
-mongoose.connect(dbURL, {
+mongoose.connect(connectionURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
