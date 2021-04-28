@@ -1,5 +1,7 @@
 const Destination = require('../models/destination');
 const Menu = require('../models/menu');
+const User = require('../models/user');
+const Comment = require('../models/user');
 
 module.exports = {
     index,
@@ -9,6 +11,8 @@ module.exports = {
     delete: deleteOne,
     edit,
     update,
+    addComment,
+    deleteComment
 };
 
 function index(req, res) { // good
@@ -16,7 +20,11 @@ function index(req, res) { // good
         if(err) {
             console.log(err);
         } else {
-            res.render('destinations/index', { title: 'All Destinations', destinations});
+            res.render('destinations/index', { 
+                title: 'All Destinations', 
+                destinations,
+                user: req.user
+            });
         }
     });
 }
@@ -25,14 +33,24 @@ function show(req, res) { // good
     Destination.findById(req.params.id, function(err, destination) {
         Menu.find( { destination: destination._id }, function(err, menu) {
             if (err) return res.redirect('/destinations');
-            res.render('destinations/show', { title: 'Destination Detail', destination, menu });
+            res.render('destinations/show', { 
+                title: 'Destination Detail', 
+                destination, 
+                menu,
+                user: req.user,
+                comments: destination.comments
+            });
         });
     });
 }
 
 function newDestination(req, res) { // good
     const price = Destination.schema.path('price').enumValues;
-    res.render('destinations/new', { title: 'Add Destination', price });
+    res.render('destinations/new', { 
+        title: 'Add Destination', 
+        price,
+        user: req.user
+    });
 }
 
 function create(req, res) { // good
@@ -108,7 +126,29 @@ function edit(req, res) {
             title: 'Update Destination',
             destinationId: req.params.id, 
             destination, 
-            price 
+            price ,
+            user: req.user
         });
+    })
+}
+
+function addComment(req, res) {
+    Destination.findById(req.params.id, function(err, destination) {
+        Comment.find( {}, function(err, comments) {
+            Comment.create(req.body, function(err, comment) {
+                if (err) return res.redirect('/destinations');                
+                req.user.comments.push(req.body);
+                req.user.save(function(err) {
+                    res.redirect(`/destinations/${destination._id}`);
+                });                
+            });
+        });
+    });
+}
+
+function deleteComment(req, res) {
+    req.user.comments.pull(req.params.id);
+    req.user.save(function(err) {
+        res.redirect(`/destination/${destination._id}`)
     })
 }

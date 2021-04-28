@@ -12,74 +12,76 @@
         <p><span style="font-weight: bold;">Cuisine(s):</span>  <%= destination.cuisine %></p>
         <p><span style="font-weight: bold;">Category:</span>  <%= destination.category %></p>
         <form action="/destinations/<%= destination._id %>/edit">
-            <button>Edit</button>
+            <button class="btn white-text">Edit</button>
         </form>
         <form action="/destinations/<%= destination._id %>/menu/new">
-            <button>Add Menu Item</button>
+            <button class="btn white-text">Add Menu Item</button>
         </form>
     </div>    
 </div>
 
-<section id="menu-items">
-    <div>
-        <h5>Menu Items</h5>
-    </div>
-    <div id="menu-table">
-        <% if (menu.length) { %>
-            <% menu.forEach(function (m) { %>
-            <div class="menu-item">
-                <img src="<%= m.image %>" alt="<%= m.name %>" width="200" class="card">
-                <div class="modal">
-                    <div class="modal-content center">
-                        <span class="close">&times;</span>
-                        <img src="<%= m.image %>" width="300">
-                        <p style="font-weight: bold;"><%= m.name %></p>
-                        <p><%= m.description %></p>
-                        <form action="/menu/<%= m._id %>?_method=DELETE" method="POST">
-                            <button>Remove</button>
-                        </form>
-                        <form action="/menu/<%= m._id %>/edit">
-                            <button>Edit</button>
-                        </form>                    
+<div class="row" id="destination-details">
+    <section class="col s6" id="menu-items">
+        <div>
+            <h5>Menu Items</h5>
+        </div>
+        <div id="menu-table">
+            <% if (menu.length) { %>
+                <% menu.forEach(function (m) { %>
+                <div class="menu-item">
+                    <img src="<%= m.image %>" alt="<%= m.name %>" width="200" class="card">
+                    <div class="modal">
+                        <div class="modal-content center">
+                            <span class="close">&times;</span>
+                            <img src="<%= m.image %>" width="300">
+                            <p style="font-weight: bold;"><%= m.name %></p>
+                            <p><%= m.description %></p>
+                            <form action="/menu/<%= m._id %>?_method=DELETE" method="POST">
+                                <button class="btn white-text">Remove</button>
+                            </form>
+                            <form action="/menu/<%= m._id %>/edit">
+                                <button class="btn white-text">Edit</button>
+                            </form>                    
+                        </div>
+
                     </div>
 
+
+                </div>                
+                <% }); %>
+            <% } else { %>
+                <p>No menu items attached</p> 
+            <% } %>
+        </div>
+    </section>
+
+    <section class="col s6" id="comments">
+        <div id="all-comments">
+            <% if (comments.length) { %>
+                <% comments.forEach(function (c) { %>
+                <div class="comment-block">
+                    <p><%= comment.user.name %></p>
+                    <p><%= comment.timestamp.toISODateString %></p>
+                    <p><%= comment.text %></p>
                 </div>
-
-
-            </div>                
-            <% }); %>
-        <% } else { %>
-            <p>No menu items attached</p> 
+                <% }); %>
+            <% } else { %>
+                <p>No comments added yet</p>
+            <% } %>
+        </div>
+        <!--- Add Comment Section --->
+        <% if(user) { %>
+            <div id="add-comment">
+                <form action="/destination/" method="POST">
+                    <textarea name="text" id="" cols="30" rows="10"></textarea>
+                    <button type="submit" class="btn white-text">Add Comment</button>
+                </form>
+            </div>   
         <% } %>
-    </div>
-</section>
-        <script>
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-            }
+    </section>
+</div>
 
-            $menuItems = $('#menu-items');
-            $itemDetails = $('.modal-content');
-
-            function displayItemDetails(e) {
-            const parent = e.target.parentElement;
-            const modal = parent.getElementsByClassName("modal")[0];
-            console.log(modal);
-            modal.style.display = "block";
-            }
-
-            function closeDetails(e) {
-            const parent = e.target.parentElement.parentElement.parentElement;
-            const modal = parent.getElementsByClassName("modal")[0];
-            console.log(modal);
-            modal.style.display = "none";
-            }
-
-            $menuItems.on('click', '.card', displayItemDetails);
-            $itemDetails.on('click', '.close', closeDetails);
+        <script src="/script.js">
         </script>
 
 <%- include('../partials/footer') %> 

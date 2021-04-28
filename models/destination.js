@@ -23,7 +23,11 @@ const destinationSchema = new Schema({
     image: {
         type: String,
         default: ''
-    }
+    },
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
 }, { timestamps: true });
 
 module.exports = mongoose.model('Destination', destinationSchema);

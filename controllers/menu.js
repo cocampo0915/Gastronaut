@@ -16,7 +16,8 @@ function newMenuItem(req, res) {
             res.render('menu/new', {
                 title: 'Add Menu Item',
                 menuItems,
-                destinationId: req.params.id
+                destinationId: req.params.id,
+                user: req.user
             });
         });
     });
