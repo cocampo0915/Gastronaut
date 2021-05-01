@@ -3,7 +3,6 @@ const User = require('../models/user');
 
 module.exports = {
     addComment,
-    updateComment,
     deleteComment,
 }
 
@@ -17,20 +16,6 @@ function addComment(req, res) {
             user.comments.push(req.params.id);
             user.save(function(err) { console.log(err) });
         });
-        destination.save(function(err) {
-            res.redirect(`/destinations/${destination._id}`);
-        });
-    });
-}
-
-function updateComment(req, res) {
-    Destination.findById(req.params.id, function(err, destination) {
-        for (comment of destination.comments) {
-            if (comment.writtenBy.toString() === req.user.id.toString()) {
-                comment.text = req.body.text;
-                break;
-            };
-        };
         destination.save(function(err) {
             res.redirect(`/destinations/${destination._id}`);
         });

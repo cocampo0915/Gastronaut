@@ -21,7 +21,9 @@
             <ul id="nav-mobile" class="right">
                 <li><a href="/">Home</a></li>
                 <li><a href="/destinations">View All</a></li>
+                <% if(user) { %>
                 <li><a href="/destinations/new">Add Spot</a></li>
+                <% } %>
                 <li>
                     <% if(user) { %>
                         <a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a>

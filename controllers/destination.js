@@ -1,7 +1,5 @@
 const Destination = require('../models/destination');
 const Menu = require('../models/menu');
-const User = require('../models/user');
-const Comment = require('../models/user');
 
 module.exports = {
     index,
@@ -31,12 +29,16 @@ function show(req, res) { // good
     Destination.findById(req.params.id, function(err, destination) {
         Menu.find( { destination: destination._id }, function(err, menu) {
             if (err) return res.redirect('/destinations');
-            res.render('destinations/show', { 
-                title: 'Destination Detail', 
-                destination, 
-                menu,
-                user: req.user,
-                comments: destination.comments
+            Destination.findOne({ name: destination.name })
+                .populate('comments.writtenBy')
+                .exec( function(err, destination) {
+                    res.render('destinations/show', { 
+                        title: 'Destination Detail', 
+                        destination, 
+                        menu,
+                        user: req.user,
+                        comments: destination.comments
+                    });
             });
         });
     });
@@ -68,7 +70,7 @@ function deleteOne(req, res) {
     });
 }
 
-function update(req, res) { // works, but crashes after updating
+function update(req, res) { 
     if(req.body.done === 'on') {
         req.body.done = true;
     } else {
@@ -110,9 +112,9 @@ function update(req, res) { // works, but crashes after updating
             if (err) {
                 return res.send();
             }
+
             res.redirect('/destinations/' + id);              
         });
-    
     });
 }
 

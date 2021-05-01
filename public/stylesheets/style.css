@@ -106,6 +106,7 @@ div.destination img {
 	transition: opacity 0.35s, transform 0.35s;
 	-webkit-transform: scale(1.05);
 	transform: scale(1.05);
+  max-height: 400px;
 }
 
 div.destination:hover img {
@@ -159,6 +160,28 @@ img.card:hover {
   margin: 5px 0 5px 0;
   padding: 10px;
 }
+
+.comment-header, .comment-content {
+  margin-bottom: 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-user-info > p {
+  margin: 5px;
+}
 #remove-destination {
   display: flex;
   justify-content: space-between;
@@ -184,6 +207,14 @@ img.card:hover {
   color: white;  
   transform: scale(1.1);
   transition: all .2s ease-in-out;
+}
+
+.link-button { 
+  background: none;
+  border: none;
+  color: #c62828;
+  text-decoration: underline;
+  cursor: pointer; 
 }
 
 /* -------------- MODAL CSS BELOW -------------- */

@@ -11,12 +11,15 @@
         <p><span style="font-weight: bold;">Price Range:</span>  <%= destination.price %></p>
         <p><span style="font-weight: bold;">Cuisine(s):</span>  <%= destination.cuisine %></p>
         <p><span style="font-weight: bold;">Category:</span>  <%= destination.category %></p>
+        <% if(user) { %>
         <form action="/destinations/<%= destination._id %>/edit">
             <button class="btn white-text">Edit</button>
         </form>
         <form action="/destinations/<%= destination._id %>/menu/new">
             <button class="btn white-text">Add Menu Item</button>
-        </form>
+        </form>            
+        <% } %>
+
     </div>    
 </div>
 
@@ -36,12 +39,14 @@
                             <img src="<%= m.image %>" width="300">
                             <p style="font-weight: bold;"><%= m.name %></p>
                             <p><%= m.description %></p>
+                            <% if(user) { %>
                             <form action="/menu/<%= m._id %>?_method=DELETE" method="POST">
                                 <button class="btn white-text">Remove</button>
                             </form>
                             <form action="/menu/<%= m._id %>/edit">
                                 <button class="btn white-text">Edit</button>
-                            </form>                    
+                            </form>        
+                            <% } %>            
                         </div>
 
                     </div>
@@ -62,14 +67,23 @@
                 <% comments.forEach(function (c) { %>
                 <div class="comment-block">
                     <div class="comment-header">
-                        <p class="left" style="font-weight: bold;"><%= c.writtenBy %></p>
-                        <p class="right"><%= c.createdAt.toLocaleDateString() %></p>                        
+                        <div class="comment-user-info">
+                            <img src="<%= c.writtenBy.avatarURL %>" class="circle left" width="50">
+                            <p class="comment-name left" style="font-weight: bold;"><%= c.writtenBy.name %></p>                            
+                        </div>
+                        <div class="comment-date">
+                            <p class="comment-date right"><%= c.createdAt.toLocaleDateString() %></p>                        
+                        </div>
                     </div>
                     <br>
                     <div class="comment-content">
                         <p><%= c.text %></p>                        
                     </div>
-
+                    <% if (user && c.writtenBy.name === user.name) { %>
+                        <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+                            <input type="submit" class="link-button" value="Delete">
+                        </form>
+                        <% } %>
                 </div>
                 <% }); %>
             <% } else { %>
