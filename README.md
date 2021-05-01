@@ -26,7 +26,7 @@ Click [here](https://gastronaut-app.herokuapp.com/) to see the app on Heroku!
 ![Update Destination Page](public/imgs/Update_Destination.png)
 ![Menu Modal](public/imgs/Menu_Modal.png)
 ![Add Menu Item Page](public/imgs/Add_Menu_Item.png)
-![Update Menu Item]()
+![Update Menu Item](public/imgs/Update_Menu.png)
 
 ## Wireframes
 ![Landing Page](public/imgs/Landing_Page_Wireframe.png)
