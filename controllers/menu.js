@@ -31,10 +31,10 @@ function create(req, res) {
         Menu.find({}, function(err, menuItems) {
             let existingMenu = menuItems.map( m => m.name);
             if (existingMenu.includes(req.body.name)) {
-                res.redirect(`/destinations/${destination._id}/menu/new`);
+                res.redirect(`/destinations/${menu.destination}`);
             } else {
                 Menu.create(req.body, function(err, menu) {
-                    res.redirect(`/destinations/${destination._id}/menu/new`);
+                    res.redirect(`/destinations/${menu.destination}`);
                 });
             }
         });
@@ -54,6 +54,7 @@ function edit(req, res) {
             title: 'Update Menu Item',
             menuId: req.params.id, 
             menu,  
+            user: req.user
         });
     })
 }
