@@ -18,7 +18,11 @@
 
         </div>
 
-        <p><%= destination.city %>, <%= destination.state %>, <%= destination.country %></p>
+        <p><%= destination.city %>, 
+            <% if(destination.state) { %>
+                <%= destination.state %>,
+            <% } %>
+             <%= destination.country %></p>
         <p><%= destination.price %></p>
     </div>
 

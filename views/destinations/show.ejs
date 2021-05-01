@@ -7,7 +7,11 @@
         <img src="<%= destination.image %>" width="500">    
     </div>
     <div class="column-details">
-        <p><span style="font-weight: bold;">Location:</span>  <%= destination.city %>, <%= destination.state %>, <%= destination.country %></p>
+        <p><span style="font-weight: bold;">Location:</span>  <%= destination.city %>, 
+            <% if(destination.state) { %>
+                <%= destination.state %>,
+            <% } %>
+            <%= destination.country %></p>
         <p><span style="font-weight: bold;">Price Range:</span>  <%= destination.price %></p>
         <p><span style="font-weight: bold;">Cuisine(s):</span>  <%= destination.cuisine %></p>
         <p><span style="font-weight: bold;">Category:</span>  <%= destination.category %></p>
