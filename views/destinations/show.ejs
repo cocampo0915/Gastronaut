@@ -57,12 +57,19 @@
 
     <section class="col s6" id="comments">
         <div id="all-comments">
+            <h5>Comments:</h5>
             <% if (comments.length) { %>
                 <% comments.forEach(function (c) { %>
                 <div class="comment-block">
-                    <p><%= comment.user.name %></p>
-                    <p><%= comment.timestamp.toISODateString %></p>
-                    <p><%= comment.text %></p>
+                    <div class="comment-header">
+                        <p class="left" style="font-weight: bold;"><%= c.writtenBy %></p>
+                        <p class="right"><%= c.createdAt.toLocaleDateString() %></p>                        
+                    </div>
+                    <br>
+                    <div class="comment-content">
+                        <p><%= c.text %></p>                        
+                    </div>
+
                 </div>
                 <% }); %>
             <% } else { %>
@@ -72,15 +79,17 @@
         <!--- Add Comment Section --->
         <% if(user) { %>
             <div id="add-comment">
-                <form action="/destination/" method="POST">
-                    <textarea name="text" id="" cols="30" rows="10"></textarea>
+                <form action="/comments/<%= destination._id %>" method="POST">
+                    <textarea name="text" cols="48" rows="3" placeholder="Fantastic food here!"></textarea>
+                    <input type="hidden" name="writtenBy" value="<%= user._id %>">
                     <button type="submit" class="btn white-text">Add Comment</button>
                 </form>
             </div>   
+        <% } else { %>
+          <p><a href="/auth/google">Login</a> to comment.</p>  
         <% } %>
     </section>
 </div>
-
         <script src="/script.js">
         </script>
 

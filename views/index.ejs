@@ -13,28 +13,21 @@
     <title>Gastronaut</title>
 </head>
 <body>
-    <nav class="red darken-3">
-        <div class="nav-wrapper">
-            <p class="brand-logo left" id="title">Gastronaut</p>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/">Home</a></li>
-                <li><a href="/destinations">View All</a></li>
-                <li><a href="/destinations/new">Add Spot</a></li>
-                <li>
-                    <% if(user) { %>
-                        <a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a>
-                    <% } else { %>
-                        <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-                    <% } %>
-                </li>
-            </ul>            
+    <main id="home-page">
+        <div class="valign-wrapper">
+            <h1 class="white-text" id="welcome-text">Welcome to Gastronaut</h1>
         </div>
-    </nav>
-    <main>
-        <h1>Welcome to Gastronaut</h1>
-
-</div>
+        <div class="center-align">
+            <a href="/destinations"><p id="enter-link">Enter</p></a>            
+        </div>
     </main>
-    <footer>All Rights Reserved &copy 2021</footer>
+        <div class="crossfade">
+            <figure></figure>
+            <figure></figure>
+            <figure></figure>
+            <figure></figure>
+            <figure></figure>
+          </div>    
+    <footer class="white-text" id="home-page-footer">All Rights Reserved &copy 2021</footer>
 </body>
 </html>

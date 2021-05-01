@@ -28,13 +28,17 @@
         </div>
         <div class="row">
             <div class="input-field">
-                <input type="text" name="cuisine" id="destination-cuisine" placeholder="<%= destination.cuisine %>">
+                <input type="text" name="cuisine" id="destination-cuisine" placeholder="<%= destination.cuisine[0] %>">
+                <input type="text" name="cuisine" id="destination-cuisine" placeholder="<%= destination.cuisine[1] %>">
+                <input type="text" name="cuisine" id="destination-cuisine" placeholder="<%= destination.cuisine[2] %>">
                 <label for="cuisine">Cuisine:</label>            
             </div>
         </div>
         <div class="row">
             <div class="input-field">
-                <input type="text" name="category" id="destination-category" placeholder="<%= destination.category %>">
+                <input type="text" name="category" id="destination-category" placeholder="<%= destination.category[0] %>">
+                <input type="text" name="category" id="destination-category" placeholder="<%= destination.category[1] %>">
+                <input type="text" name="category" id="destination-category" placeholder="<%= destination.category[2] %>">
                 <label for="category">Category:</label>
             </div>
         </div>
@@ -58,12 +62,12 @@
         </div>
         <br>    
 <div class="center">
-        <input type="submit" value="Update">
+        <input class="btn" type="submit" value="Update">
 
     </form>
 
     <form action="/destinations/<%= destinationId %>"> 
-        <button>Return</button>
+        <button class="btn">Return</button>
     </form>
 
 </div>

@@ -11,8 +11,6 @@ module.exports = {
     delete: deleteOne,
     edit,
     update,
-    addComment,
-    deleteComment
 };
 
 function index(req, res) { // good
@@ -129,26 +127,5 @@ function edit(req, res) {
             price ,
             user: req.user
         });
-    })
-}
-
-function addComment(req, res) {
-    Destination.findById(req.params.id, function(err, destination) {
-        Comment.find( {}, function(err, comments) {
-            Comment.create(req.body, function(err, comment) {
-                if (err) return res.redirect('/destinations');                
-                req.user.comments.push(req.body);
-                req.user.save(function(err) {
-                    res.redirect(`/destinations/${destination._id}`);
-                });                
-            });
-        });
-    });
-}
-
-function deleteComment(req, res) {
-    req.user.comments.pull(req.params.id);
-    req.user.save(function(err) {
-        res.redirect(`/destination/${destination._id}`)
     })
 }

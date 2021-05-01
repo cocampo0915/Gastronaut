@@ -13,6 +13,7 @@ require('dotenv').config();
 const indexRouter = require('./routes/index');
 const destinationRouter = require('./routes/destination');
 const menuRouter = require('./routes/menu');
+const commentsRouter = require('./routes/comments');
 
 // initialize the express app
 const app = express();
@@ -48,6 +49,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/destinations', destinationRouter);
 app.use('/', menuRouter);
+app.use('/comments', commentsRouter);
 
 // tell app to listen on a port for requests
 
