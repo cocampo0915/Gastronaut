@@ -6,9 +6,9 @@ const userSchema = new Schema({
     email: String,
     avatarURL: String,
     googleId: String,
-    comments: [{
+    reviewedDest: [{
         type: Schema.Types.ObjectId,
-        ref: 'Comment'
+        ref: 'Destination'
     }],
 }, { timestamps: true });
 

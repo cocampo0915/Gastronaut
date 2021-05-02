@@ -84,7 +84,7 @@
                         <p><%= c.text %></p>                        
                     </div>
                     <% if (user && c.writtenBy.name === user.name) { %>
-                        <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+                        <form action="/comments/<%= destination._id %>?_method=DELETE" method="POST">
                             <input type="submit" class="link-button" value="Delete">
                         </form>
                         <% } %>

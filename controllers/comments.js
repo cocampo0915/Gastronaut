@@ -13,8 +13,10 @@ function addComment(req, res) {
         // find the user that's creating the comment
         User.findById(req.user, function(err, user) {
             // pushes the comment into the user's array of comments
-            user.comments.push(req.params.id);
-            user.save(function(err) { console.log(err) });
+            user.reviewedDest.push(req.params.id);
+            user.save(function(err) { 
+                console.log(err);
+            });
         });
         destination.save(function(err) {
             res.redirect(`/destinations/${destination._id}`);
@@ -23,17 +25,34 @@ function addComment(req, res) {
 }
 
 function deleteComment(req, res) {
-    // find destination of comment
-    Destination.findById(req.params.id, function(err, destination) {
-        // locate the user's comment
-        for (comment of destination.comments) {
-            if (comment.writtenBy.toString() === req.user.id.toString()) {
-                comment.text = "";
+    // Find the destination of the comment
+    Destination.findById(req.params.id, function(err, dest) {
+        for (i = 0; i < dest.comments.length; i++) {
+            // find the comment written by the user
+            if (dest.comments[i].writtenBy.toString() === req.user.id.toString()) {
+                // remove that comment from the array in the destinations model
+                dest.comments.splice(i, 1);
                 break;
             };
         };
-        destination.save(function(err) {
-            res.redirect(`/destinations/${destination._id}`);
+
+        // Find the user that wrote the comment
+        User.findById(req.user, function(err, user) {
+            for (i = 0; i < user.reviewedDest.length; i++ ) {
+                // remove that comment from the user's comments array
+                if (user.reviewedDest[i].toString() === req.params.id.toString()) {
+                    user.reviewedDest.splice(i, 1);
+                };
+            };
+            // Save to user
+            user.save(function(err) {
+                console.log(err);
+            });
+        });
+        
+        // Save to destination
+        dest.save(function(err) {
+            res.redirect(`/destinations/${dest._id}`);
         });
     });
 }

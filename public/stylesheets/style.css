@@ -217,6 +217,14 @@ img.card:hover {
   cursor: pointer; 
 }
 
+.link-override:hover {
+  transform: none;
+}
+
+.footer-element {
+  margin: 0 10px 0 10px;
+}
+
 /* -------------- MODAL CSS BELOW -------------- */
 
         /* The Modal (background) */
