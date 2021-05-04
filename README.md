@@ -24,18 +24,18 @@ Click [here](https://gastronaut-app.herokuapp.com/) to see the app on Heroku!
 
 --------------------
 
-## Screenshot(s)
+## Screenshots and Wireframes
 Home Page
 
-![Landing Page](public/imgs/Home_Page.png)
+![Landing Page](public/imgs/home-page.png)
 
 Index page upon entry into site
 
-![Index](public/imgs/Index_Page.png)
+![Index](public/imgs/view-all-page.png)
 
 Details page upon clicking on any of the destinations.
 
-![Details Page](public/imgs/Details_Page.png)
+![Details Page](public/imgs/details-page.png)
 
 Clicking the "Add Spot" link on the nav bar brings you to this form.
 
@@ -56,13 +56,6 @@ Clicking the "Add Menu Item" button right below the destination's details will b
 On the popup of the menu item, there is a "Edit" button. Clicking the button will bring you to this page to edit the details of that menu item.
 
 ![Update Menu Item](public/imgs/Update_Menu.png)
-
---------------------
-
-## Wireframes
-![Landing Page](public/imgs/Landing_Page_Wireframe.png)
-![Index](public/imgs/Show_All_Wireframe.png)
-![Details Page](public/imgs/Show_Page_Wireframe.png)
 
 --------------------
 
