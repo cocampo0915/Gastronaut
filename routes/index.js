@@ -18,8 +18,10 @@ router.get('/oauth2callback', passport.authenticate('google', {
 
 // logout route
 router.get('/logout', function(req, res) {
-    req.logOut(); // destroy the login session from the session store
-    res.redirect('/'); // send the user back to the home page
+    req.logOut(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/'); // send the user back to the home page
+    }); // destroy the login session from the session store
 });
 
 module.exports = router;
