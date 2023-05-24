@@ -4,7 +4,7 @@ A "foodie wishlist" CRUD web application that allows you to add destinations of 
 --------------------
 
 ## Getting Started
-Click [here](https://gastronaut-app.herokuapp.com/) to see the app on Heroku!
+Click [here](https://gastronaut.up.railway.app/) to see the app on Railway!
 
 --------------------
 
@@ -76,3 +76,8 @@ The "Comments" model is an embedded Schema within "Business". It is also related
 - Adding responsive design for tablet screens and mobile devices
 - Adding search query function to index
 - Adding a feature to allow users to upload images directly from their computer
+
+--------------------
+### Updates
+**May 24, 2023** - 
+Changed server hosting location from Heroku to Railway, updated PassportJS authentication code.
