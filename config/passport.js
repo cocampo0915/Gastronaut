@@ -1,5 +1,5 @@
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GoogleStrategy = require('passport-google-oidc');
 const User = require('../models/user');
 
 // to plug-in login options
@@ -7,7 +7,7 @@ passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK
-}, function (accessToken, refreshToken, profile, cb) {
+}, function verify(issuer, profile, cb) {
     // a user has attempted a login
     // does user exist in database?
     User.findOne({
@@ -18,13 +18,15 @@ passport.use(new GoogleStrategy({
         if (err) return cb(err);
         // if user exists, proceed to login
         if (user) {
+            console.log(Object.keys(profile));
             return cb(null, user)
         } else {
+            console.log(JSON.stringify(profile));
             const newUser = new User({
                 name: profile.displayName,
                 email: profile.emails[0].value,
                 googleId: profile.id,
-                avatarURL: profile.photos[0].value
+                // avatarURL: profile.photos[0].value
             });
 
             newUser.save(function(err) {
